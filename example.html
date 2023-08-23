@@ -4,19 +4,19 @@
     <title></title>
   </head>
   <body onload="init()">
+    <script src="dist/fingerprint.min.js" type="module"></script>
     <script>
-      var exports = {};
-      function init() {
-        var fpPromise = fingerprint();
-        // console.log(fpPromise);
-        fpPromise.then((output) => {
-          // console.log(output);
-          document.write("FP: " + output.fingerprint + "\n<br>\n<code>" + JSON.stringify(output.profile, null, 4).replace(/\n/g, "<br>").replace(/\x20/g, "&nbsp;"));
-        }).catch((err) => {
-          console.log(err);
-        });
+      async function init() {
+        try {
+          const { deviceId, persistentId, profile } = await fingerprint();
+          document.write(
+            `<pre>Device ID: ${deviceId}\nPersistent ID: ${persistentId}\nProfile: ${JSON.stringify(profile, null, 2)}</pre>`
+          );
+        } catch (err) {
+          console.error(err);
+          document.write(`<code>Error: ${err.message}</code>`);
+        }
       }
     </script>
-    <script src="opfs.js"></script>
   </body>
 </html>

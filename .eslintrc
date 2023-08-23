@@ -1,0 +1,73 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "jasmine": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "prettier", "check-file", "filenames", "simple-import-sort", "import"],
+  "rules": {
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1,
+        "offsetTernaryExpressions": true
+      }
+    ],
+    "linebreak-style": ["error", "unix"],
+    "quotes": [
+      "error",
+      "double",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "semi": ["error", "always"],
+    "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }],
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "ignoreRestSiblings": true
+      }
+    ],
+    "@typescript-eslint/no-empty-interface": "off",
+    "check-file/no-index": "off",
+    "check-file/folder-naming-convention": [
+      "error",
+      {
+        // allow leading underscore, but enforcing kebab-case
+        "*": "(_)?[a-z0-9-]+"
+      }
+    ],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error"
+  },
+  "overrides": [
+    {
+      "files": ["*.spec.ts"],
+      "rules": {
+        "@typescript-eslint/ban-ts-comment": "off"
+      }
+    },
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ]
+}
