@@ -1,3 +1,11 @@
+import { FingerprintNavigator } from "../types";
+
+type MozElement = HTMLElement & {
+  style: CSSStyleDeclaration & {
+    MozAppearance?: string;
+  };
+};
+
 function isSafari(): boolean {
   const v = navigator.vendor;
   return v !== undefined && v.indexOf("Apple") === 0;
@@ -9,7 +17,7 @@ function isChrome(): boolean {
 }
 
 function isFirefox(): boolean {
-  return document.documentElement !== undefined && (document.documentElement as any).style.MozAppearance !== undefined;
+  return document.documentElement !== undefined && (document.documentElement as MozElement).style.MozAppearance !== undefined;
 }
 
 function isFirefoxResistFingerprinting(): boolean {
@@ -25,11 +33,11 @@ function isFirefoxResistFingerprinting(): boolean {
 }
 
 function isMSIE(): boolean {
-  return (navigator as any).msSaveBlob !== undefined;
+  return (navigator as FingerprintNavigator).msSaveBlob !== undefined;
 }
 
 function isBrave(): boolean {
-  return isChrome() && (navigator as any).brave !== undefined;
+  return isChrome() && (navigator as FingerprintNavigator).brave !== undefined;
 }
 
-export { isSafari, isChrome, isFirefox, isFirefoxResistFingerprinting, isMSIE, isBrave };
+export { isBrave, isChrome, isFirefox, isFirefoxResistFingerprinting, isMSIE, isSafari };

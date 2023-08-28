@@ -1,4 +1,6 @@
-export function murmurhash3_32_gc(key: string, seed: number): number {
+/* eslint-disable no-fallthrough */
+
+const murmurhash3_32_gc = (key: string, seed: number): number => {
   const remainder = key.length & 3;
   const bytes = key.length - remainder;
   let h1 = seed;
@@ -49,4 +51,6 @@ export function murmurhash3_32_gc(key: string, seed: number): number {
   h1 ^= h1 >>> 16;
 
   return h1 >>> 0;
-}
+};
+
+export { murmurhash3_32_gc as hash };

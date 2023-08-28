@@ -1,4 +1,4 @@
-export const parameterNames = [
+export const webglParameterNames = [
   "ACTIVE_TEXTURE",
   "ALIASED_LINE_WIDTH_RANGE",
   "ALIASED_POINT_SIZE_RANGE",
@@ -85,7 +85,7 @@ export const parameterNames = [
   "VIEWPORT",
 ];
 
-export const extensionList = {
+export const webglExtensionList = {
   WEBGL_compressed_texture_s3tc: [
     "COMPRESSED_RGB_S3TC_DXT1_EXT",
     "COMPRESSED_RGBA_S3TC_DXT1_EXT",

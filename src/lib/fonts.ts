@@ -1,4 +1,4 @@
-const notGeckoFonts = [
+const notWebkitFonts = [
   "fakefont",
   "Apple Color Emoji",
   "sans-serif-thin",
@@ -113,7 +113,7 @@ const notGeckoFonts = [
   "TeamViewer16",
 ];
 
-const geckoFonts = [
+const webkitFonts = [
   "fakefont",
   "TeamViewer10",
   "TeamViewer11",
@@ -869,4 +869,4 @@ const geckoFonts = [
   "serif",
 ];
 
-export { geckoFonts, notGeckoFonts };
+export { notWebkitFonts,webkitFonts };

@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <title></title>
+    <title>Fingerprint Example</title>
   </head>
   <body onload="init()">
     <script src="dist/fingerprint.min.js" type="module"></script>
     <script>
       async function init() {
         try {
-          const { deviceId, persistentId, profile } = await fingerprint();
+          const { browserId, deviceId, profile } = await fingerprint();
           document.write(
-            `<pre>Device ID: ${deviceId}\nPersistent ID: ${persistentId}\nProfile: ${JSON.stringify(profile, null, 2)}</pre>`
+            `<pre>Device ID: ${browserId}\nPersistent ID: ${deviceId}\nProfile: ${JSON.stringify(profile, null, 2)}</pre>`
           );
         } catch (err) {
           console.error(err);
