@@ -5,7 +5,7 @@ import mime from "mime";
 
 const files = {
   "/fingerprint.min.js": "./dist/fingerprint.min.js",
-  default: "./src/test/example.html",
+  default: "./test/example.html",
 };
 
 logger.info("Server listening on http://localhost:3000/");

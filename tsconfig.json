@@ -15,6 +15,6 @@
     "lib": ["DOM", "ES2018"],
     "module": "UMD"
   },
-  "include": ["./src"],
-  "exclude": ["./src/test"]
+  "include": ["src"],
+  "exclude": ["test"]
 }

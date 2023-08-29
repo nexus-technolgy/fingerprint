@@ -9,7 +9,7 @@
     "verify": "eslint './src/**/*.ts' && tsc --noEmit",
     "lint": "eslint './src/**/*.ts'",
     "lint:fix": "eslint './src/**/*.ts' --fix",
-    "dev": "npm run build && ts-node src/test/mock.ts",
+    "dev": "npm run build && ts-node test/mock.ts",
     "prepublish": "npm run verify && npm run build"
   },
   "files": [

@@ -2,7 +2,7 @@
 
 This is a passive browser fingerprinting library for creating persistent, unique and long-lasting digital fingerprints without depending on time dependent variables such as the user agent string. As such, the fingerprint should not change most of the time when a user upgrades their browser to the current version.
 
-This version is a heavily modified fork of the OPFS source from Joe Rutkowski <Joe@dreggle.com> (https://github.com/Joe12387/OP-Fingerprinting-Script) [DEMO](https://detectincognito.com/opfs.html "DEMO") with numerous code enhancements and quality improvements. It will generate a different device ID and browser ID from the original, but uses all of the same markers to build the profile.
+This version is a heavily modified fork of the [OPFS source](https://github.com/Joe12387/OP-Fingerprinting-Script) [DEMO](https://detectincognito.com/opfs.html) with numerous code enhancements and quality improvements. It will generate a different unique ID and browser ID from the original, but uses all of the same markers to build the profile.
 
 ## Usage
 
@@ -24,6 +24,8 @@ console.log({ uniqueId, browserId });
 
 // { uniqueId: 2984961870, browserId: 582672678 }
 ```
+
+The package can also be called in as a module and used directly in a browser. See the `example.html` file in the `/test` directory for direct browser use.
 
 ## About
 
