@@ -1,6 +1,6 @@
 {
   "name": "@nexustech/fingerprint",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A passive browser fingerprinting library for creating browser and device IDs",
   "main": "dist/fingerprint.js",
   "types": "dist/index.d.ts",
