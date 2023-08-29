@@ -17,3 +17,13 @@ export type FingerprintWindow = Window &
     };
     SharedArrayBuffer: (x?: number) => void;
   };
+
+export type FingerprintLogger = {
+  [key: string]: unknown;
+  log: VoidFunction;
+  error: VoidFunction;
+  warn: VoidFunction;
+  info: VoidFunction;
+  debug: VoidFunction;
+  trace: VoidFunction;
+};

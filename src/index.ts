@@ -65,17 +65,18 @@ import {
   webglInfo,
   webglProgram,
 } from "./markers";
-import { P, R } from "./types";
+import { FingerprintLogger, P, R } from "./types";
 
 /**
  * Browser Fingerprint
  * @returns { uniqueId, browserId, profile }
  **/
-async function fingerprint(logger = console): Promise<{
+async function fingerprint(logService?: FingerprintLogger): Promise<{
   uniqueId: number;
   browserId: number;
   profile: R;
 }> {
+  const logger = logService ?? console;
   return new Promise(function (resolve, reject): void {
     const fingerprints = {
       applePay,
