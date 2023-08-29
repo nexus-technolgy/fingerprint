@@ -4,17 +4,22 @@
     <title>Fingerprint Example</title>
   </head>
   <body onload="init()">
-    <script src="dist/fingerprint.min.js" type="module"></script>
+    <div id="output"></div>
+    <script src="fingerprint.min.js" type="module"></script>
     <script>
       async function init() {
         try {
-          const { browserId, deviceId, profile } = await fingerprint();
-          document.write(
-            `<pre>Device ID: ${browserId}\nPersistent ID: ${deviceId}\nProfile: ${JSON.stringify(profile, null, 2)}</pre>`
-          );
+          const { uniqueId, browserId, profile } = await fingerprint();
+          document.getElementById(
+            "output"
+          ).innerHTML = `<pre>Unique ID: ${uniqueId}\nBrowser ID: ${browserId}\nProfile: ${JSON.stringify(
+            profile,
+            null,
+            2
+          )}</pre>`;
         } catch (err) {
           console.error(err);
-          document.write(`<code>Error: ${err.message}</code>`);
+          document.getElementById("output").innerHTML = `<code>Error: ${err.message}</code>`;
         }
       }
     </script>

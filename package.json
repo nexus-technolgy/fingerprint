@@ -1,7 +1,7 @@
 {
   "name": "@nexustech/fingerprint",
   "version": "1.0.0",
-  "description": "A browser fingerprinting library for creating persistent, unique and long-lasting digital fingerprints.",
+  "description": "A passive browser fingerprinting library for creating browser and device IDs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -9,8 +9,8 @@
     "verify": "eslint './src/**/*.ts' && tsc --noEmit",
     "lint": "eslint './src/**/*.ts'",
     "lint:fix": "eslint './src/**/*.ts' --fix",
-    "dev": "ts-node src/test/mock.ts --esm",
-    "prepublish": "npm run verify && npm run test && npm run build"
+    "dev": "npm run build && ts-node src/test/mock.ts",
+    "prepublish": "npm run verify && npm run build"
   },
   "files": [
     "dist"
@@ -22,8 +22,8 @@
   "keywords": [
     "fingerprinting"
   ],
-  "author": "Joe Rutkowski <Joe@dreggle.com>, Daniel Bryar",
-  "license": "MIT",
+  "author": "Daniel Bryar",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@nexustech/logger": "^1.2.0",
     "@types/mime": "^3.0.1",

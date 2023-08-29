@@ -1,3 +1,22 @@
+/**
+ * Source: @nexustech/fingerprint
+ * Forked from: op-fingerprinting-script
+ *
+ * Copyright 2023 Nexustech Pty Ltd [AU]
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License in the root of this project, or at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import { hash } from "./lib";
 import {
   applePay,
@@ -49,12 +68,12 @@ import {
 import { R } from "./types";
 
 /**
- * Browser Fingerprint Script v1.0.0
- * Forked from Joe Rutkowski <Joe@dreggle.com> (https://github.com/Joe12387/OP-Fingerprinting-Script)
+ * Browser Fingerprint
+ * @returns { uniqueId, browserId, profile }
  **/
 async function fingerprint(logger = console): Promise<{
+  uniqueId: number;
   browserId: number;
-  deviceId: number;
   profile: Record<string, unknown>;
 }> {
   return new Promise(function (resolve, reject): void {
@@ -125,7 +144,7 @@ async function fingerprint(logger = console): Promise<{
         for (let i = 0; i < index.length; i++) {
           profile[index[i]] = k[i];
         }
-        const browserId = hash(JSON.stringify(profile), 420);
+        const uniqueId = hash(JSON.stringify(profile), 420);
         const persistentComponents = [
           profile.jsHeapSizeLimit,
           profile.audioContext,
@@ -135,10 +154,10 @@ async function fingerprint(logger = console): Promise<{
           profile.webglInfo,
           profile.webglProgram,
         ];
-        const deviceId = hash(JSON.stringify(persistentComponents), 420);
+        const browserId = hash(JSON.stringify(persistentComponents), 420);
         const output = {
+          uniqueId,
           browserId,
-          deviceId,
           profile,
         };
         resolve(output);

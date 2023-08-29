@@ -4,7 +4,7 @@
     "declarationMap": true,
     "sourceMap": false,
     "outDir": "dist",
-    "removeComments": true,
+    "removeComments": false,
     "esModuleInterop": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,

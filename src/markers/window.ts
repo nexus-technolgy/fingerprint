@@ -6,7 +6,7 @@ const w = window as FingerprintWindow;
 
 export const applePay = (): P => {
   return new Promise((resolve): void => {
-    if (typeof w.ApplePaySession !== "function") resolve([-1, null]);
+    if (typeof w.ApplePaySession !== "function" || window.location.protocol !== "https:") resolve([-1, null]);
     const enabled = w.ApplePaySession.canMakePayments();
     resolve([0, enabled]);
   });
