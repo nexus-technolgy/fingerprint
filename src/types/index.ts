@@ -19,7 +19,6 @@ export type FingerprintWindow = Window &
   };
 
 export type FingerprintLogger = {
-  [key: string]: unknown;
   log: VoidFunction;
   error: VoidFunction;
   warn: VoidFunction;
