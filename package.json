@@ -5,7 +5,7 @@
   "main": "dist/fingerprint.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rm -rf dist && tsc && node esbuild.js",
+    "build": "rm -rf dist && tsc --emitDeclarationOnly && node esbuild.js",
     "verify": "eslint './src/**/*.ts' && tsc --noEmit",
     "lint": "eslint './src/**/*.ts'",
     "lint:fix": "eslint './src/**/*.ts' --fix",
