@@ -65,7 +65,7 @@ import {
   webglInfo,
   webglProgram,
 } from "./markers";
-import { R } from "./types";
+import { P, R } from "./types";
 
 /**
  * Browser Fingerprint
@@ -74,7 +74,7 @@ import { R } from "./types";
 async function fingerprint(logger = console): Promise<{
   uniqueId: number;
   browserId: number;
-  profile: Record<string, unknown>;
+  profile: R;
 }> {
   return new Promise(function (resolve, reject): void {
     const fingerprints = {
@@ -92,7 +92,7 @@ async function fingerprint(logger = console): Promise<{
       doNotTrack,
       errorToSource,
       errors,
-      evalToString: (): Promise<[number, number]> => {
+      evalToString: (): P => {
         return Promise.resolve([0, eval.toString().length]);
       },
       fonts,
@@ -118,7 +118,7 @@ async function fingerprint(logger = console): Promise<{
       rtt,
       screenResolution,
       sharedArrayBuffer,
-      sourceBuffer: (): Promise<[number, string[]]> => {
+      sourceBuffer: (): P => {
         return Promise.resolve([0, [typeof SourceBuffer, typeof SourceBufferList]]);
       },
       speechSynth,
@@ -131,30 +131,35 @@ async function fingerprint(logger = console): Promise<{
       webglProgram,
     };
 
-    const index: string[] = [];
+    const markers: string[] = [];
     const promises: Promise<unknown>[] = [];
-    for (const method in fingerprints) {
-      index.push(method);
-      promises.push(fingerprints[method]());
+
+    for (const marker in fingerprints) {
+      markers.push(marker);
+      promises.push(fingerprints[marker]());
     }
 
     Promise.all(promises)
-      .then((k): void => {
+      .then((results): void => {
         const profile: R = {};
-        for (let i = 0; i < index.length; i++) {
-          profile[index[i]] = k[i];
+
+        for (const index in markers) {
+          profile[markers[index]] = results[index];
         }
+
         const uniqueId = hash(JSON.stringify(profile), 420);
+
         const persistentComponents = [
-          profile.jsHeapSizeLimit,
-          profile.audioContext,
-          profile.canvasAPI,
-          profile.performance,
-          profile.speechSynth,
-          profile.webglInfo,
-          profile.webglProgram,
-        ];
+          "audioContext",
+          "canvasAPI",
+          "jsHeapSizeLimit",
+          "performance",
+          "speechSynth",
+          "webglInfo",
+          "webglProgram",
+        ].map((component) => profile[component]);
         const browserId = hash(JSON.stringify(persistentComponents), 420);
+
         const output = {
           uniqueId,
           browserId,
