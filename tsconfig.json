@@ -1,11 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "rootDir": "./src",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": false,
-    "outDir": "./dist",
+    "outDir": "dist",
     "removeComments": true,
     "esModuleInterop": true,
     "moduleResolution": "node",

@@ -1,4 +1,4 @@
-import { isBrave,isChrome, isFirefoxResistFingerprinting } from "../lib";
+import { isBrave, isChrome, isFirefoxResistFingerprinting } from "./browser";
 
 type P<T = unknown> = Promise<[number, T]>;
 

@@ -1,6 +1,6 @@
-import { isBrave, isFirefox, isMSIE, isSafari, notWebkitFonts, webkitFonts } from "../lib";
-
+import { notWebkitFonts, webkitFonts } from "../lib";
 import { P } from "../types";
+import { isBrave, isFirefox, isMSIE, isSafari } from "./browser";
 
 export const fonts = (): P => {
   return new Promise((resolve): void => {

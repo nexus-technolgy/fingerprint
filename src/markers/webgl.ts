@@ -1,5 +1,6 @@
-import { hash, isBrave, isFirefoxResistFingerprinting, webglExtensionList, webglParameterNames } from "../lib";
+import { hash, webglExtensionList, webglParameterNames } from "../lib";
 import { P } from "../types";
+import { isBrave, isFirefoxResistFingerprinting } from "./browser";
 
 const precisionTypes = ["LOW_FLOAT", "MEDIUM_FLOAT", "HIGH_FLOAT", "LOW_INT", "MEDIUM_INT", "HIGH_INT"];
 const shaderTypes = ["FRAGMENT_SHADER", "VERTEX_SHADER"];

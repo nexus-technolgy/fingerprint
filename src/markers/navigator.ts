@@ -1,5 +1,5 @@
-import { isBrave, isChrome, isFirefoxResistFingerprinting } from "../lib";
 import { FingerprintNavigator, P, R } from "../types";
+import { isBrave, isChrome, isFirefoxResistFingerprinting } from "./browser";
 
 const n = navigator as FingerprintNavigator;
 

@@ -1,5 +1,6 @@
-import { hash, isBrave, isChrome, isFirefox, isSafari } from "../lib";
+import { hash } from "../lib";
 import { FingerprintWindow, P } from "../types";
+import { isBrave, isChrome, isFirefox, isSafari } from "./browser";
 
 const w = window as FingerprintWindow;
 
@@ -206,5 +207,18 @@ export const timezone = (): P => {
       parseFloat(String(new Date(year, 6, 1).getTimezoneOffset()))
     );
     resolve([1, "UTC" + (utc >= 0 ? "+" : "-") + Math.abs(utc)]);
+  });
+};
+
+export const timezoneOffset = (): P => {
+  return new Promise((resolve): void => {
+    const year = new Date().getFullYear();
+    resolve([
+      0,
+      -Math.max(
+        parseFloat(String(new Date(year, 0, 1).getTimezoneOffset())),
+        parseFloat(String(new Date(year, 6, 1).getTimezoneOffset()))
+      ),
+    ]);
   });
 };

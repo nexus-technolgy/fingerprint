@@ -1,4 +1,5 @@
-import { hash, isBrave, isFirefoxResistFingerprinting, isSafari } from "../lib";
+import { hash } from "../lib";
+import { isBrave, isFirefoxResistFingerprinting, isSafari } from "./browser";
 
 const asciiString = unescape(
   "%uD83D%uDE00abcdefghijklmnopqrstuvwxyz%uD83D%uDD2B%uD83C%uDFF3%uFE0F%u200D%uD83C%uDF08%uD83C%uDDF9%uD83C%uDDFC%uD83C%uDFF3%uFE0F%u200D%u26A7%uFE0F0123456789"
